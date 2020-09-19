@@ -1,0 +1,206 @@
+# Soarer Converter's configuration for IBM Model M122 (1390876, etc.) and
+# F122 (6110345, etc.) keyboards.
+#
+# Original Author: Depleted Vespene.
+# Date: 20181010.
+# Version: 1.2.
+#
+# Modified: Joe Sheridan
+# date 20200919
+# version 1.3
+##### BEGIN ########
+
+macroblock
+
+  macro EXTRA_F1
+    PUSH_META CLEAR_META all
+    MAKE LCTRL
+    PRESS V
+    BREAK LCTRL
+    POP_ALL_META    
+  endmacro
+
+  macro EXTRA_F3
+    PUSH_META CLEAR_META all
+    MAKE LCTRL
+    PRESS X
+    BREAK LCTRL
+    POP_ALL_META    
+  endmacro
+
+  macro EXTRA_F4
+    PUSH_META CLEAR_META all
+    MAKE LCTRL
+    PRESS C
+    BREAK LCTRL
+    POP_ALL_META    
+  endmacro
+
+  macro EXTRA_F5
+    PUSH_META CLEAR_META all
+    MAKE LALT
+    PRESS RIGHT
+    BREAK LALT
+    POP_ALL_META    
+  endmacro
+
+  macro EXTRA_F6
+    PUSH_META CLEAR_META all
+    MAKE LALT
+    PRESS LEFT
+    BREAK LALT
+    POP_ALL_META
+  endmacro
+
+  macro EXTRA_F7
+    PUSH_META CLEAR_META all
+    MAKE LGUI
+    PRESS LEFT
+    BREAK LGUI
+    POP_ALL_META
+
+  endmacro
+
+  macro EXTRA_F8
+    PUSH_META CLEAR_META all
+    MAKE LGUI
+    PRESS RIGHT
+    BREAK LGUI
+    POP_ALL_META
+
+  endmacro
+
+  macro  F13
+    PUSH_META CLEAR_META all
+    MAKE LALT
+    PRESS TAB
+    BREAK LALT
+    POP_ALL_META
+  endmacro 
+
+  macro  F14
+    PUSH_META CLEAR_META all
+    MAKE LGUI
+    PRESS UP
+    BREAK LGUI
+    POP_ALL_META
+  endmacro 
+
+  macro  F15
+    PUSH_META CLEAR_META all
+    MAKE LGUI
+    PRESS DOWN
+    BREAK LGUI
+    POP_ALL_META
+  endmacro 
+
+  # Alt-PrtScr in a single keystroke - this is actually quite more
+  # convenient than what would be expected at a first glance.
+  macro F20
+    PUSH_META CLEAR_META all
+    MAKE LALT
+    PRESS PRINTSCREEN
+    BREAK LALT
+    POP_ALL_META
+  endmacro
+
+ macro  F21
+    PUSH_META CLEAR_META all
+    MAKE LALT
+    press pad_0
+    press pad_1
+    press pad_6
+    press pad_7
+    BREAK LALT
+    POP_ALL_META
+  endmacro 
+
+ macro  F22
+    PUSH_META CLEAR_META all
+    MAKE LALT
+    press pad_0
+    press pad_1
+    press pad_7
+    press pad_1
+    BREAK LALT
+    POP_ALL_META
+  endmacro 
+
+ macro  F23
+    PUSH_META CLEAR_META all
+    MAKE LALT
+    press pad_0
+    press pad_1
+    press pad_8
+    press pad_7
+    BREAK LALT
+    POP_ALL_META
+  endmacro 
+
+
+  # On my national layout, Shift-0 produces the '=' character. Adjust this
+  # as needed for others.
+  macro PAD_EQUALS
+    PUSH_META CLEAR_META all
+    MAKE LSHIFT
+    PRESS 0
+    BREAK LSHIFT
+    POP_ALL_META
+  endmacro
+
+endblock
+
+
+remapblock
+
+# Left-side function keys.
+#  EXTRA_F1      --paste                
+  EXTRA_F2      ESC
+#  EXTRA_F3      --cut                 
+# EXTRA_F4      --copy
+# EXTRA_F5      --alt-right
+#  EXTRA_F6      --alt-left
+#  EXTRA_F7      --lgui-right          # Future "layer n".
+#  EXTRA_F8      --lgui-left         # Future "layer 0".
+ EXTRA_F9      LGUI  # "Windows" key.
+ EXTRA_F10     APP  # "Menu" key.
+
+# Main alphanumeric block. This remapping is non-negotiable.
+  EUROPE_1      BACKSLASH
+
+# Top-side extra function keys.
+#  F13           --alt-tab
+#  F14           --lgui-up
+#  F15           --lgui-down
+  F16            NUM_LOCK   #SELECT_1            # Toggles layer 1 (see below).
+  F17            PRINTSCREEN  #MEDIA_PLAY_PAUSE
+  F18            SCROLL_LOCK  #MEDIA_PREV_TRACK
+  F19            PAUSE #MEDIA_NEXT_TRACKs
+#  F20            SELECT_1  #MEDIA_STOP
+#  F21            SELECT_2  #NUM_LOCK
+#  F22            SELECT_3  #(see macro above)
+#  F23            SELECT_4 
+  F24            POWER
+
+# Navigation cluster; only the "Rule" key needs to be reassigned.
+  LANG_4        DOWN
+
+# Numpad. In the default layer, the gray keys are made to behave as they do
+# in a regular full-sized keyboard, EXCEPT: a) the top left key outputs the
+# equals sign instead of becoming the NumLock key; b) battleships have two
+# 1U keys instead of a single 2U plus key - of those, the top one remains
+# plus and the bottom key outputs a comma.
+  ESC           PAD_EQUALS
+  NUM_LOCK      PAD_SLASH
+  SCROLL_LOCK   PAD_ASTERIX
+  EXTRA_SYSRQ   PAD_MINUS
+  PAD_ASTERIX   PAD_PLUS
+  PAD_MINUS     COMMA
+  PAD_PLUS      PAD_ENTER
+# Bonus: on my national layout, Shift-, produces the ';' character. With
+# the direct remapping above (instead of a macro), pressing Shift-PAD_MINUS
+# has the same effect. Replace with a macro if needed.
+
+endblock
+
+##### END ##########
